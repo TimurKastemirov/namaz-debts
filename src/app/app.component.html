@@ -1,0 +1,41 @@
+<header>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/my-debts">
+        <mat-icon>menu_book</mat-icon>
+        <span>My debts</span>
+      </button>
+      <button mat-menu-item routerLink="/my-debts/1">
+        <mat-icon>settings</mat-icon>
+        <span>My settings</span>
+      </button>
+    </mat-menu>
+
+    <span>{{title}}</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>
+
+<main>
+  <mat-drawer-container class="example-container" autosize>
+    <div class="example-sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-container>
+</main>
+
+<footer>
+  <span class="copyright">© developed by Timur Kastemirov in 2020.</span>
+  <span class="copyright">Free for use</span>
+</footer>

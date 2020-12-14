@@ -1,0 +1,52 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-container {
+  width: 100%;
+  min-height: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+main {
+  padding-top: 56px;
+  height: 500px;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  min-height: 60px;
+  background: rgb(33, 33, 33);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+
+  .copyright {
+    color: white;
+  }
+}
