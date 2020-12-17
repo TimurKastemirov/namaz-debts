@@ -18,7 +18,7 @@ describe('DebtGeneratorService', () => {
     it('should return expected value', () => {
         const expected: Debt = {
             date: {
-                from: new Date('2020-12-10'),
+                from: new Date('2020-12-11'),
                 to: new Date('2020-12-15')
             },
             namazes: [

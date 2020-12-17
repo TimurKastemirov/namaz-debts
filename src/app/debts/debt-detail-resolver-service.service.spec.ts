@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DebtDetailResolverServiceService } from './debt-detail-resolver-service.service';
+import { DebtDetailResolverService } from './debt-detail-resolver.service';
 
-describe('DebtDetailResolverServiceService', () => {
-  let service: DebtDetailResolverServiceService;
+describe('DebtDetailResolverService', () => {
+  let service: DebtDetailResolverService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DebtDetailResolverServiceService);
+    service = TestBed.inject(DebtDetailResolverService);
   });
 
   it('should be created', () => {

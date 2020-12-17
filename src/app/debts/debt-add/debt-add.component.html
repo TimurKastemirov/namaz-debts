@@ -1,0 +1,24 @@
+<div class="debt-add">
+    <form novalidate name="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Date from</mat-label>
+            <input matInput [matDatepicker]="picker1" name="from" [(ngModel)]="debt.date.from">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date to</mat-label>
+            <input matInput [matDatepicker]="picker" name="to" [(ngModel)]="debt.date.to">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+
+        <button mat-raised-button
+                color="primary"
+                [disabled]="!(debt.date.from && debt.date.to)"
+                (click)="save()"
+        >save</button>
+    </form>
+</div>

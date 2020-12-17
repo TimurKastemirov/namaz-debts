@@ -9,18 +9,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { DebtItemComponent } from './debt-item/debt-item.component';
 import { MatCardModule } from '@angular/material/card';
 import { DebtEditComponent } from './debt-edit/debt-edit.component';
+import { DebtAddComponent } from './debt-add/debt-add.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
-  declarations: [DebtListComponent, DebtDetailComponent, DebtItemComponent, DebtEditComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    DebtsRoutingModule,
-  ]
+    declarations: [DebtListComponent, DebtDetailComponent, DebtItemComponent, DebtEditComponent, DebtAddComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatInputModule,
+        DebtsRoutingModule,
+    ]
 })
 export class DebtsModule {
 }

@@ -11,7 +11,7 @@ export class DebtGeneratorService {
     public generate(dates: { from: Date, to: Date }): Debt {
         const to = dates.to.getTime();
         const from = dates.from.getTime();
-        const daysCount = (to - from) / this.mscInDay;
+        const daysCount = ((to - from) / this.mscInDay) + 1;
         const namazes = [];
         const namaz: Namaz = {
             sabah: false,

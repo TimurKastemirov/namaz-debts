@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DebtListComponent } from './debt-list/debt-list.component';
 import { DebtDetailComponent } from './debt-detail/debt-detail.component';
 import { DebtEditComponent } from './debt-edit/debt-edit.component';
+import { DebtAddComponent } from './debt-add/debt-add.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'add',
-        component: DebtEditComponent,
+        component: DebtAddComponent,
         resolve: {} // TODO make resolver
       },
       {
