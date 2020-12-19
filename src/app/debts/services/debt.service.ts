@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DebtApiService } from '../api/debt.service';
-import { Debt } from './debt';
+import { DebtApiService } from '../../api/debt.service';
+import { Debt } from '../models/debt';
 
 @Injectable({
     providedIn: 'root'

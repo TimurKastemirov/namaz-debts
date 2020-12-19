@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { DebtGeneratorService } from './debt-generator.service';
-import { Debt } from './debt';
+import { Debt } from '../models/debt';
 
 describe('DebtGeneratorService', () => {
     let sut: DebtGeneratorService;

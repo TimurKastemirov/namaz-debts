@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Debt } from '../debt';
-import { DebtGeneratorService } from '../debt-generator.service';
-import { DebtService } from '../debt.service';
+import { Debt } from '../../models/debt';
+import { DebtGeneratorService } from '../../services/debt-generator.service';
+import { DebtService } from '../../services/debt.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

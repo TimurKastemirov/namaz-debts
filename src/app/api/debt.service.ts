@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DebtApiStrategy } from './debt-strategy/strategy.interface';
 import { LocalStorageStrategy } from './debt-strategy/local-storage';
-import { Debt } from '../debts/debt';
+import { Debt } from '../debts/models/debt';
 
 @Injectable({
     providedIn: 'root'

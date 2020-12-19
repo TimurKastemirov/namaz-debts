@@ -1,6 +1,6 @@
 import { DebtApiStrategy } from './strategy.interface';
 import { Observable, of } from 'rxjs';
-import { Debt } from '../../debts/debt';
+import { Debt } from 'src/app/debts/models/debt';
 
 export class LocalStorageStrategy implements DebtApiStrategy {
     storage: any;

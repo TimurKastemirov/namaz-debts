@@ -1,0 +1,33 @@
+<mat-card class="debt-card">
+    <mat-card-header>
+        <div mat-card-avatar class="debt-header-id">{{id}}</div>
+        <mat-card-title>Dates</mat-card-title>
+        <mat-card-subtitle>
+            from {{item.date.from | date}}
+            to {{item.date.to | date}}
+        </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>Days at all: {{allDebtDays}}</p>
+        <p>Finished days: {{finishedDebtDays}}</p>
+        <p>Debt Days: {{debtDays}}</p>
+        <p>Progress</p>
+        <mat-progress-bar
+                mode="determinate"
+                value="{{finishedDebtDays/allDebtDays}}"
+                color="warn"
+        ></mat-progress-bar>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button color="accent" (click)="goToDetail()">
+            <span>DETAIL</span>
+            <mat-icon>arrow_right_alt</mat-icon>
+        </button>
+        <button mat-button color="warn" (click)="deleteItem()">
+            <span>DELETE</span>
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { Debt } from './debt';
+import { Debt } from '../../models/debt';
 import { EMPTY, Observable, of } from 'rxjs';
-import { DebtService } from './debt.service';
+import { DebtService } from '../debt.service';
 import { mergeMap, take } from 'rxjs/operators';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class DebtDetailResolverService implements Resolve<Debt> {
           if (crisis) {
             return of(crisis);
           } else { // id not found
-            this.router.navigate(['/crisis-center']);
+            this.router.navigate(['/my-debts']);
             return EMPTY;
           }
         })

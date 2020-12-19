@@ -1,0 +1,18 @@
+<div class="debt-list">
+    <div class="debt-item" *ngFor="let debt of debts; index as i">
+        <app-debt-item
+                [id]="i+1"
+                [item]="debt"
+                (delete)="onDelete($event)"
+                (detail)="goToDetail($event)"
+        ></app-debt-item>
+    </div>
+</div>
+<div class="btn-wrapper">
+    <button mat-icon-button
+            class="add-btn"
+            (click)="addNewDebt()"
+            aria-label="Example icon-button with share icon">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>

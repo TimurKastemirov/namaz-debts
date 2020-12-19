@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Debt } from '../debt';
+import { Debt } from '../../models/debt';
 
 @Component({
     selector: 'app-debt-detail',

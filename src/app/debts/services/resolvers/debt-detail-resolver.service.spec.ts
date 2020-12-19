@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DebtDetailResolverService } from './debt-detail-resolver.service';
+import { DebtDetailResolverService } from 'src/app/debts/services/resolvers/debt-detail-resolver.service';
 
 describe('DebtDetailResolverService', () => {
   let service: DebtDetailResolverService;

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DebtListComponent } from './debt-list/debt-list.component';
-import { DebtDetailComponent } from './debt-detail/debt-detail.component';
-import { DebtAddComponent } from './debt-add/debt-add.component';
-import { DebtDetailResolverService } from './debt-detail-resolver.service';
+import { DebtListComponent } from './components/debt-list/debt-list.component';
+import { DebtDetailComponent } from './components/debt-detail/debt-detail.component';
+import { DebtAddComponent } from './components/debt-add/debt-add.component';
+import { DebtDetailResolverService } from './services/resolvers/debt-detail-resolver.service';
+import { DebtListResolverService } from './services/resolvers/debt-list-resolver.service';
 
 const routes: Routes = [
     {
@@ -23,6 +24,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: DebtListComponent,
+                // runGuardsAndResolvers: 'always',
+                resolve: {
+                    debts: DebtListResolverService,
+                }
             },
         ]
     }

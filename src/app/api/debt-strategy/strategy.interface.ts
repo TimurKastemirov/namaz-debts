@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Debt } from '../../debts/debt';
+import { Debt } from 'src/app/debts/models/debt';
 
 export interface DebtApiStrategy {
   getItem(id: number): Observable<Debt>;
