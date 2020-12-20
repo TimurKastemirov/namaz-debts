@@ -1,0 +1,18 @@
+.debt-detail {
+  padding-top: 15px;
+  width: 310px;
+
+  table {
+    width: 100%;
+  }
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .table-content {
+    display: flex;
+    justify-content: space-between;
+  }
+}

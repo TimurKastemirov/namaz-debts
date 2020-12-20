@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Debt } from '../../models/debt';
+import { Debt } from 'src/app/debts/models/debt';
+import { Namaz } from 'src/app/debts/models/namaz';
 
 @Component({
     selector: 'app-debt-detail',
@@ -9,6 +10,7 @@ import { Debt } from '../../models/debt';
 })
 export class DebtDetailComponent implements OnInit {
     debt: Debt;
+    displayedColumns = ['all', 'sabah', 'oyle', 'ekindi', 'akhsham', 'yatsi'];
 
     constructor(
         private route: ActivatedRoute
@@ -20,6 +22,20 @@ export class DebtDetailComponent implements OnInit {
             .subscribe((data: { debt: Debt }) => {
                 this.debt = data.debt;
             });
+    }
+
+    toggleAllDay(index) {
+        const namaz = this.debt.namazes[index];
+        const isAllSet = Object.values(namaz).every(x => x);
+        this.debt.namazes[index] = this.setNamaz(namaz, !isAllSet);
+    }
+
+    private setNamaz(namazesPerDay: Namaz, isDone: boolean): Namaz {
+        for (const [key] of Object.entries(namazesPerDay)) {
+            namazesPerDay[key] = isDone;
+        }
+
+        return namazesPerDay;
     }
 
 }
