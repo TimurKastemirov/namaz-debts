@@ -37,8 +37,8 @@ export class DebtListComponent implements OnInit {
                 .pipe(
                     take(1),
                     concatMap(() => this.debtService.getList()),
-                    concatMap(resultDebts => this.debts = resultDebts)
-                );
+                )
+                .subscribe(debts => this.debts = debts);
         }
     }
 
