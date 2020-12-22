@@ -2,17 +2,61 @@
   padding-top: 15px;
   width: 310px;
 
-  table {
-    width: 100%;
-  }
+  .debt-table {
+    background-color: rgb(66, 66, 66);
 
-  .table-header {
-    display: flex;
-    justify-content: space-between;
-  }
+    .debt-table-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      align-items: center;
 
-  .table-content {
-    display: flex;
-    justify-content: space-between;
+      .mi {
+        display: none;
+      }
+
+      .debt-table-data {
+        flex-grow: 1;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+        box-sizing: border-box;
+
+        &.green {
+          background-color: #1e6b1e;
+        }
+
+        &.check {
+          .mi.check {
+            display: block;
+          }
+        }
+
+        &.red {
+          background-color: #a53e3e;
+        }
+
+        &.cancel {
+          .mi.cancel {
+            display: block;
+          }
+        }
+
+        label {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          input {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }

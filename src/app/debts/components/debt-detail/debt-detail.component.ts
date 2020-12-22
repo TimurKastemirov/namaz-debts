@@ -11,6 +11,7 @@ import { Namaz } from 'src/app/debts/models/namaz';
 export class DebtDetailComponent implements OnInit {
     debt: Debt;
     displayedColumns = ['all', 'sabah', 'oyle', 'ekindi', 'akhsham', 'yatsi'];
+    areAllNamazesPerDayDoneList: boolean[];
 
     constructor(
         private route: ActivatedRoute
@@ -21,13 +22,23 @@ export class DebtDetailComponent implements OnInit {
         this.route.data
             .subscribe((data: { debt: Debt }) => {
                 this.debt = data.debt;
+                this.areAllNamazesPerDayDoneList = this.debt
+                    .namazes
+                    .map(namazesPerDay => this.areAllNamazesPerDayDone(namazesPerDay));
             });
     }
 
     toggleAllDay(index) {
-        const namaz = this.debt.namazes[index];
-        const isAllSet = Object.values(namaz).every(x => x);
-        this.debt.namazes[index] = this.setNamaz(namaz, !isAllSet);
+        const namazesPerDay = this.debt.namazes[index];
+        const areAllDone = this.areAllNamazesPerDayDone(namazesPerDay);
+        this.debt.namazes[index] = this.setNamaz(namazesPerDay, !areAllDone);
+    }
+
+    toggleOneNamaz(index) {
+        setTimeout(() => {
+            const namazesPerDay = this.debt.namazes[index];
+            this.areAllNamazesPerDayDoneList[index] = this.areAllNamazesPerDayDone(namazesPerDay);
+        }, 0); // use setTimeout because ngModel updates after method call
     }
 
     private setNamaz(namazesPerDay: Namaz, isDone: boolean): Namaz {
@@ -38,4 +49,7 @@ export class DebtDetailComponent implements OnInit {
         return namazesPerDay;
     }
 
+    private areAllNamazesPerDayDone(namazesPerDay: Namaz): boolean {
+        return Object.values(namazesPerDay).every(x => x);
+    }
 }
