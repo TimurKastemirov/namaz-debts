@@ -14,6 +14,7 @@ export class DebtItemComponent implements OnInit {
     public allDebtDays: number;
     public finishedDebtDays: number;
     public debtDays: number;
+    public progress: number;
 
     constructor() {
     }
@@ -24,6 +25,7 @@ export class DebtItemComponent implements OnInit {
             namazesPerDay => Object.values(namazesPerDay).every(x => x)
         ).length;
         this.debtDays = this.allDebtDays - this.finishedDebtDays;
+        this.progress = (this.finishedDebtDays / this.allDebtDays) * 100;
     }
 
     goToDetail(): void {
