@@ -10,6 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { DebtListComponent } from 'src/app/debts/components/debt-list/debt-list.component';
 import { DebtDetailComponent } from 'src/app/debts/components/debt-detail/debt-detail.component';
@@ -29,6 +30,7 @@ import { DebtAddComponent } from 'src/app/debts/components/debt-add/debt-add.com
         MatNativeDateModule,
         MatInputModule,
         MatProgressBarModule,
+        MatTabsModule,
 
         DebtsRoutingModule,
     ]

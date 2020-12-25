@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Debt } from 'src/app/debts/models/debt';
 import { Namaz } from 'src/app/debts/models/namaz';
@@ -7,7 +7,8 @@ import { DebtService } from 'src/app/debts/services/debt.service';
 @Component({
     selector: 'app-debt-detail',
     templateUrl: './debt-detail.component.html',
-    styleUrls: ['./debt-detail.component.scss']
+    styleUrls: ['./debt-detail.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class DebtDetailComponent implements OnInit {
     private timeout: any;
