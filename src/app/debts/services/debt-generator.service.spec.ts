@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { DebtGeneratorService } from './debt-generator.service';
-import { Debt } from '../models/debt';
+import { NamazDebt } from 'src/app/debts/models/namaz-debt';
+import { mockNamazDebt } from 'src/app/debts/services/serializers/mock/namaz-debt';
 
 describe('DebtGeneratorService', () => {
     let sut: DebtGeneratorService;
@@ -16,49 +17,17 @@ describe('DebtGeneratorService', () => {
     });
 
     it('should return expected value', () => {
-        const expected: Debt = {
-            date: {
-                from: new Date('2020-12-11'),
-                to: new Date('2020-12-15')
-            },
-            namazes: [
-                {
-                    sabah: false,
-                    oyle: false,
-                    ekindi: false,
-                    akhsham: false,
-                    yatsi: false,
-                },
-                {
-                    sabah: false,
-                    oyle: false,
-                    ekindi: false,
-                    akhsham: false,
-                    yatsi: false,
-                },
-                {
-                    sabah: false,
-                    oyle: false,
-                    ekindi: false,
-                    akhsham: false,
-                    yatsi: false,
-                },
-                {
-                    sabah: false,
-                    oyle: false,
-                    ekindi: false,
-                    akhsham: false,
-                    yatsi: false,
-                },
-                {
-                    sabah: false,
-                    oyle: false,
-                    ekindi: false,
-                    akhsham: false,
-                    yatsi: false,
-                },
-            ]
-        };
+        const expected: NamazDebt = mockNamazDebt;
+        expected.namazes = expected.namazes.map(namazesPerDay => {
+            return {
+                date: namazesPerDay.date,
+                sabah: false,
+                oyle: false,
+                ekindi: false,
+                akhsham: false,
+                yatsi: false,
+            };
+        });
 
         expect(sut.generate(expected.date)).toEqual(expected);
     });

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Debt } from '../../models/debt';
+import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 
 @Component({
     selector: 'app-debt-item',
@@ -8,7 +8,7 @@ import { Debt } from '../../models/debt';
 })
 export class DebtItemComponent implements OnInit {
     @Input() id: number;
-    @Input() item: Debt;
+    @Input() item: NamazDebt;
     @Output() delete = new EventEmitter<number>();
     @Output() detail = new EventEmitter<number>();
     public allDebtDays: number;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DebtApiStrategy } from './debt-strategy/strategy.interface';
 import { LocalStorageStrategy } from './debt-strategy/local-storage';
-import { Debt } from '../debts/models/debt';
+import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 
 @Injectable({
     providedIn: 'root'
@@ -21,11 +21,11 @@ export class DebtApiService {
         return this.strategy.getList();
     }
 
-    create(item: Debt) {
+    create(item: NamazDebt) {
         return this.strategy.create(item);
     }
 
-    update(item: Debt) {
+    update(item: NamazDebt) {
         return this.strategy.update(item);
     }
 

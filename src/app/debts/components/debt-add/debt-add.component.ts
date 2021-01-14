@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Debt } from '../../models/debt';
+import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 import { DebtGeneratorService } from '../../services/debt-generator.service';
 import { DebtService } from '../../services/debt.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,12 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./debt-add.component.scss']
 })
 export class DebtAddComponent implements OnInit {
-    public debt: Debt = {
+    public debt: NamazDebt = {
         date: {
             from: null,
             to: null
         }
-    } as Debt;
+    } as NamazDebt;
 
     constructor(
         private debtGenerator: DebtGeneratorService,
@@ -31,7 +31,7 @@ export class DebtAddComponent implements OnInit {
     save(): void {
         console.log(this.debt);
         const date = this.debt.date;
-        const debt: Debt = this.debtGenerator.generate(date);
+        const debt: NamazDebt = this.debtGenerator.generate(date);
         console.log(debt);
         this.debtService.create(debt)
             .subscribe(id => {

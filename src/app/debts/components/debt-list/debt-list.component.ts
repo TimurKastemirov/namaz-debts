@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { concatMap, take } from 'rxjs/operators';
-import { Debt } from 'src/app/debts/models/debt';
+import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 import { DebtService } from 'src/app/debts/services/debt.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { DebtService } from 'src/app/debts/services/debt.service';
     styleUrls: ['./debt-list.component.scss']
 })
 export class DebtListComponent implements OnInit {
-    debts: Debt[];
+    debts: NamazDebt[];
 
     constructor(
         private route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class DebtListComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.data
-            .subscribe((data: { debts: Debt[] }) => {
+            .subscribe((data: { debts: NamazDebt[] }) => {
                 this.debts = data.debts;
             });
     }

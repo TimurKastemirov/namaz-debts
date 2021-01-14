@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { Debt } from '../../models/debt';
+import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 import { EMPTY, Observable, of } from 'rxjs';
 import { DebtService } from '../debt.service';
 import { mergeMap, take } from 'rxjs/operators';
@@ -8,14 +8,14 @@ import { mergeMap, take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class DebtDetailResolverService implements Resolve<Debt> {
+export class DebtDetailResolverService implements Resolve<NamazDebt> {
 
   constructor(
       private debtService: DebtService,
       private router: Router,
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Debt> | Promise<Debt> | Debt {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<NamazDebt> | Promise<NamazDebt> | NamazDebt {
     const id = + route.paramMap.get('id');
     return this.debtService.getItem(id).pipe(
         take(1),

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DebtApiService } from '../../api/debt.service';
-import { Debt } from '../models/debt';
+import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 
 @Injectable({
     providedIn: 'root'
@@ -20,11 +20,11 @@ export class DebtService {
         return this.debtApiService.getList();
     }
 
-    create(item: Debt) {
+    create(item: NamazDebt) {
         return this.debtApiService.create(item);
     }
 
-    update(item: Debt) {
+    update(item: NamazDebt) {
         return this.debtApiService.update(item);
     }
 
