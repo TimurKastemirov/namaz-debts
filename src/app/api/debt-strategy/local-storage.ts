@@ -1,6 +1,6 @@
 import { DebtApiStrategy } from './strategy.interface';
 import { Observable, of } from 'rxjs';
-import { NamazDebt } from 'src/app/debts/models/namaz-debt';
+import { NamazDebtDTO } from 'src/app/debts/dto/namaz-debt';
 
 export class LocalStorageStrategy implements DebtApiStrategy {
     storage: any;
@@ -12,7 +12,7 @@ export class LocalStorageStrategy implements DebtApiStrategy {
         }
     }
 
-    get debts(): NamazDebt[] {
+    get debts(): NamazDebtDTO[] {
         return JSON.parse(this.storage.getItem('debts'));
     }
 
@@ -20,7 +20,7 @@ export class LocalStorageStrategy implements DebtApiStrategy {
         this.storage.setItem('debts', JSON.stringify(debts));
     }
 
-    create(item: NamazDebt): Observable<number> {
+    create(item: NamazDebtDTO): Observable<number> {
         const debts = this.debts;
         item.id = this.generateId();
         debts.push(item);
@@ -34,16 +34,16 @@ export class LocalStorageStrategy implements DebtApiStrategy {
         return of(null);
     }
 
-    getItem(id: number): Observable<NamazDebt> {
+    getItem(id: number): Observable<NamazDebtDTO> {
         const debt = this.debts.find(el => el.id === id);
         return of(debt);
     }
 
-    getList(): Observable<NamazDebt[]> {
+    getList(): Observable<NamazDebtDTO[]> {
         return of(this.debts);
     }
 
-    update(item: NamazDebt): Observable<null> {
+    update(item: NamazDebtDTO): Observable<null> {
         const debts = this.debts;
         const index = debts.findIndex(el => el.id === item.id);
         debts.splice(index, 1, item);

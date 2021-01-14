@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
-import { NamazDebt } from 'src/app/debts/models/namaz-debt';
+import { NamazDebtDTO } from 'src/app/debts/dto/namaz-debt';
 
 export interface DebtApiStrategy {
-  getItem(id: number): Observable<NamazDebt>;
-  getList(): Observable<NamazDebt[]>;
-  create(item: NamazDebt): Observable<number>;
-  update(item: NamazDebt): Observable<null>;
+  getItem(id: number): Observable<NamazDebtDTO>;
+  getList(): Observable<NamazDebtDTO[]>;
+  create(item: NamazDebtDTO): Observable<number>;
+  update(item: NamazDebtDTO): Observable<null>;
   delete(id: number): Observable<null>;
 }

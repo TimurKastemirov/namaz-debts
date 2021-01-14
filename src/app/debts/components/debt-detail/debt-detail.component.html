@@ -1,6 +1,8 @@
 <div class="debt-detail">
-    <p>From: {{debt.date.from | date}}</p>
-    <p>To: {{debt.date.to | date}}</p>
+    <div class="dates">
+        <p>From: {{debt.date.from | date}}</p>
+        <p>To: {{debt.date.to | date}}</p>
+    </div>
 
     <mat-tab-group>
         <mat-tab label="All">

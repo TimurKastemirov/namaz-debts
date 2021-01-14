@@ -2,6 +2,11 @@
   padding-top: 15px;
   width: 310px;
 
+  .dates {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .debt-table {
     padding-top: 2px;
     background-color: rgb(66, 66, 66);

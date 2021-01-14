@@ -17,9 +17,11 @@ export class DebtDetailComponent implements OnInit {
     debt: NamazDebt;
     areAllNamazesPerDayDoneList: boolean[];
 
-    private static setNamaz(namazesPerDay: NamazesPerDay, isDone: boolean): NamazesPerDay {
+    private static setNamazesPerDay(namazesPerDay: NamazesPerDay, isDone: boolean): NamazesPerDay {
         for (const [key] of Object.entries(namazesPerDay)) {
-            namazesPerDay[key] = isDone;
+            if (key !== 'date') {
+                namazesPerDay[key] = isDone;
+            }
         }
 
         return namazesPerDay;
@@ -48,7 +50,7 @@ export class DebtDetailComponent implements OnInit {
     toggleAllNamazes(index) {
         const namazesPerDay = this.debt.namazes[index];
         const areAllDone = DebtDetailComponent.areAllNamazesPerDayDone(namazesPerDay);
-        this.debt.namazes[index] = DebtDetailComponent.setNamaz(namazesPerDay, !areAllDone);
+        this.debt.namazes[index] = DebtDetailComponent.setNamazesPerDay(namazesPerDay, !areAllDone);
         this.save();
     }
 
