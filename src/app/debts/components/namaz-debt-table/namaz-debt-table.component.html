@@ -1,0 +1,95 @@
+<div class="namaz-debt-table">
+    <div class="namaz-debt-table-header">
+        <div class="namaz-debt-table-row">
+            <div class="namaz-debt-table-data">
+                <span class="namaz-debt-table-col-name">Date</span>
+            </div>
+            <div class="namaz-debt-table-data">
+                <span class="namaz-debt-table-col-name">Sab</span>
+            </div>
+            <div class="namaz-debt-table-data">
+                <span class="namaz-debt-table-col-name">Oyl</span>
+            </div>
+            <div class="namaz-debt-table-data">
+                <span class="namaz-debt-table-col-name">Eki</span>
+            </div>
+            <div class="namaz-debt-table-data">
+                <span class="namaz-debt-table-col-name">Akh</span>
+            </div>
+            <div class="namaz-debt-table-data">
+                <span class="namaz-debt-table-col-name">Yat</span>
+            </div>
+        </div>
+    </div>
+    <div class="namaz-debt-table-body">
+        <div class="namaz-debt-table-row"
+             [ngClass]="{'shake': shakeClass[i]}"
+             *ngFor="let namazesPerDay of namazes; index as i">
+            <div class="namaz-debt-table-data"
+                 [ngClass]="{'green check': areAllNamazesPerDayDoneList[i], 'red cancel': !areAllNamazesPerDayDoneList[i]}">
+                <label>
+                    <span>{{namazesPerDay.date | date : 'MMM d'}}</span>
+                    <input type="checkbox"
+                           name="all{{i}}"
+                           [(ngModel)]="areAllNamazesPerDayDoneList[i]"
+                           (click)="toggleAllNamazes(i)">
+                </label>
+            </div>
+            <div class="namaz-debt-table-data"
+                 [ngClass]="{'green check': namazesPerDay.sabah, 'red cancel': !namazesPerDay.sabah}">
+                <label>
+                    <mat-icon class="mi check">check_circle</mat-icon>
+                    <mat-icon class="mi cancel">cancel</mat-icon>
+                    <input type="checkbox"
+                           name="sabah{{i}}"
+                           [(ngModel)]="namazesPerDay.sabah"
+                           (click)="toggleOneNamaz(i)">
+                </label>
+            </div>
+            <div class="namaz-debt-table-data"
+                 [ngClass]="{'green check': namazesPerDay.oyle, 'red cancel': !namazesPerDay.oyle}">
+                <label>
+                    <mat-icon class="mi check">check_circle</mat-icon>
+                    <mat-icon class="mi cancel">cancel</mat-icon>
+                    <input type="checkbox"
+                           name="oyle{{i}}"
+                           [(ngModel)]="namazesPerDay.oyle"
+                           (click)="toggleOneNamaz(i)">
+                </label>
+            </div>
+            <div class="namaz-debt-table-data"
+                 [ngClass]="{'green check': namazesPerDay.ekindi, 'red cancel': !namazesPerDay.ekindi}">
+                <label>
+                    <mat-icon class="mi check">check_circle</mat-icon>
+                    <mat-icon class="mi cancel">cancel</mat-icon>
+                    <input type="checkbox"
+                           name="ekindi{{i}}"
+                           [(ngModel)]="namazesPerDay.ekindi"
+                           (click)="toggleOneNamaz(i)">
+                </label>
+            </div>
+            <div class="namaz-debt-table-data"
+                 [ngClass]="{'green check': namazesPerDay.akhsham, 'red cancel': !namazesPerDay.akhsham}">
+                <label>
+                    <mat-icon class="mi check">check_circle</mat-icon>
+                    <mat-icon class="mi cancel">cancel</mat-icon>
+                    <input type="checkbox"
+                           name="akhsham{{i}}"
+                           [(ngModel)]="namazesPerDay.akhsham"
+                           (click)="toggleOneNamaz(i)">
+                </label>
+            </div>
+            <div class="namaz-debt-table-data"
+                 [ngClass]="{'green check': namazesPerDay.yatsi, 'red cancel': !namazesPerDay.yatsi}">
+                <label>
+                    <mat-icon class="mi check">check_circle</mat-icon>
+                    <mat-icon class="mi cancel">cancel</mat-icon>
+                    <input type="checkbox"
+                           name="yatsi{{i}}"
+                           [(ngModel)]="namazesPerDay.yatsi"
+                           (click)="toggleOneNamaz(i)">
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

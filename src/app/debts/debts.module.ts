@@ -16,9 +16,10 @@ import { DebtListComponent } from 'src/app/debts/components/debt-list/debt-list.
 import { DebtDetailComponent } from 'src/app/debts/components/debt-detail/debt-detail.component';
 import { DebtItemComponent } from 'src/app/debts/components/debt-item/debt-item.component';
 import { DebtAddComponent } from 'src/app/debts/components/debt-add/debt-add.component';
+import { NamazDebtTableComponent } from './components/namaz-debt-table/namaz-debt-table.component';
 
 @NgModule({
-    declarations: [DebtListComponent, DebtDetailComponent, DebtItemComponent, DebtAddComponent],
+    declarations: [DebtListComponent, DebtDetailComponent, DebtItemComponent, DebtAddComponent, NamazDebtTableComponent],
     imports: [
         CommonModule,
         FormsModule,

@@ -14,7 +14,7 @@ export class DebtApiService {
     }
 
     getItem(id: number) {
-        return this.strategy.getItem(id);
+        return this.strategy.getItem(+id);
     }
 
     getList() {
@@ -30,6 +30,6 @@ export class DebtApiService {
     }
 
     delete(id: number) {
-        return this.strategy.delete(id);
+        return this.strategy.delete(+id);
     }
 }
