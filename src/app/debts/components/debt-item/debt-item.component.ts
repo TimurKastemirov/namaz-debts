@@ -25,7 +25,7 @@ export class DebtItemComponent implements OnInit {
             namazesPerDay => Object.values(namazesPerDay).every(x => x)
         ).length;
         this.debtDays = this.allDebtDays - this.finishedDebtDays;
-        this.progress = (this.finishedDebtDays / this.allDebtDays) * 100;
+        this.progress = this.finishedDebtDays / this.allDebtDays;
     }
 
     goToDetail(): void {

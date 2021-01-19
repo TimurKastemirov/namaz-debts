@@ -12,10 +12,10 @@
         <p>Days at all: {{allDebtDays}}</p>
         <p>Finished days: {{finishedDebtDays}}</p>
         <p>Debt Days: {{debtDays}}</p>
-        <p>Progress: {{progress}}%</p>
+        <p>Progress: {{progress | percent}}</p>
         <mat-progress-bar
                 mode="determinate"
-                value="{{progress}}"
+                value="{{progress * 100}}"
                 color="warn"
         ></mat-progress-bar>
     </mat-card-content>

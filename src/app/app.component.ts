@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DebtService } from 'src/app/debts/services/debt.service';
 import { NamazDebt } from 'src/app/debts/models/namaz-debt';
+import { DebtApiService } from 'src/app/api/debt.service';
 
 @Component({
     selector: 'app-root',
@@ -23,12 +23,12 @@ export class AppComponent {
     }
 
     constructor(
-        private debtService: DebtService,
+        private debtApiService: DebtApiService,
     ) {
     }
 
     exportDebts() {
-        this.debtService.getList().subscribe(debts => {
+        this.debtApiService.getList().subscribe(debts => {
             const str = JSON.stringify(debts);
             AppComponent.download('debts.json', str);
         });
