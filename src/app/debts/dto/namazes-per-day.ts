@@ -1,8 +1,4 @@
 export interface NamazesPerDayDTO {
     date: string;
-    sabah: boolean;
-    oyle: boolean;
-    ekindi: boolean;
-    akhsham: boolean;
-    yatsi: boolean;
+    namazes: number; // binary representation of 5 namazes as 11111
 }

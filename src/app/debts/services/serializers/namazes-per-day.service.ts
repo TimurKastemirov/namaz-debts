@@ -10,9 +10,14 @@ import { DateUtils } from 'src/app/date.utils';
 export class NamazesPerDaySerializerService implements Serializer<NamazesPerDay, NamazesPerDayDTO> {
     deserialize(dto: NamazesPerDayDTO): NamazesPerDay {
         const model = {} as NamazesPerDay;
-        for (const [key, val] of Object.entries(dto)) {
-            model[key] = val;
-        }
+        const namazNames = ['sabah', 'oyle', 'ekindi', 'akhsham', 'yatsi'];
+        const namazes = dto.namazes.toString(2)
+            .split('')
+            .map(namazBinary => Boolean(Number(namazBinary)));
+
+        namazNames.forEach((name, index) => {
+            model[name] = namazes[index];
+        });
 
         model.date = DateUtils.strToDate(dto.date);
         return model;
@@ -20,11 +25,13 @@ export class NamazesPerDaySerializerService implements Serializer<NamazesPerDay,
 
     serialize(model: NamazesPerDay): NamazesPerDayDTO {
         const dto = {} as NamazesPerDayDTO;
-        for (const [key, val] of Object.entries(model)) {
-            dto[key] = val;
-        }
+        const { date, sabah, oyle, ekindi, akhsham, yatsi } = model;
+        const namazesBinary = [sabah, oyle, ekindi, akhsham, yatsi]
+            .map(item => Number(item))
+            .join('');
 
-        dto.date = DateUtils.dateToStr(model.date);
+        dto.date = DateUtils.dateToStr(date);
+        dto.namazes = parseInt(namazesBinary, 2);
         return dto;
     }
 }

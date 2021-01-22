@@ -4,43 +4,23 @@ import { NamazesPerDay } from 'src/app/debts/models/namazes-per-day';
 export const mockNamazesDTO: NamazesPerDayDTO[] = [
     {
         date: '2020-01-20',
-        sabah: true,
-        oyle: true,
-        ekindi: true,
-        akhsham: true,
-        yatsi: true,
+        namazes: 31,
     },
     {
         date: '2020-01-21',
-        sabah: false,
-        oyle: false,
-        ekindi: false,
-        akhsham: false,
-        yatsi: false,
+        namazes: 0,
     },
     {
         date: '2020-01-22',
-        sabah: false,
-        oyle: false,
-        ekindi: false,
-        akhsham: false,
-        yatsi: false,
+        namazes: 0,
     },
     {
         date: '2020-01-23',
-        sabah: true,
-        oyle: true,
-        ekindi: true,
-        akhsham: true,
-        yatsi: true,
+        namazes: 31,
     },
     {
         date: '2020-01-24',
-        sabah: true,
-        oyle: true,
-        ekindi: true,
-        akhsham: true,
-        yatsi: true,
+        namazes: 31,
     }
 ];
 
