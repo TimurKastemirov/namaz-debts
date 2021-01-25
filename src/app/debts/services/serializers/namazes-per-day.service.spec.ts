@@ -5,8 +5,8 @@ import { mockNamazes, mockNamazesDTO } from 'src/app/debts/services/serializers/
 
 describe('NamazesPerDaySerializer', () => {
     let service: NamazesPerDaySerializerService;
-    const model = mockNamazes[0];
-    const dto = mockNamazesDTO[0];
+    const models = mockNamazes;
+    const dtos = mockNamazesDTO;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
@@ -14,10 +14,14 @@ describe('NamazesPerDaySerializer', () => {
     });
 
     it('should serialize model to DTO', () => {
-        expect(service.serialize(model)).toEqual(dto);
+        models.forEach((model, index) => {
+            expect(service.serialize(model)).toEqual(dtos[index]);
+        });
     });
 
     it('should deserialize DTO to model', () => {
-        expect(service.deserialize(dto)).toEqual(model);
+        dtos.forEach((dto, index) => {
+            expect(service.deserialize(dto)).toEqual(models[index]);
+        });
     });
 });

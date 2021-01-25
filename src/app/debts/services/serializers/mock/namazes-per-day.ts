@@ -8,19 +8,19 @@ export const mockNamazesDTO: NamazesPerDayDTO[] = [
     },
     {
         date: '2020-01-21',
-        namazes: 0,
+        namazes: 1,
     },
     {
         date: '2020-01-22',
-        namazes: 0,
+        namazes: 2,
     },
     {
         date: '2020-01-23',
-        namazes: 31,
+        namazes: 7,
     },
     {
         date: '2020-01-24',
-        namazes: 31,
+        namazes: 30,
     }
 ];
 
@@ -39,20 +39,20 @@ export const mockNamazes: NamazesPerDay[] = [
         oyle: false,
         ekindi: false,
         akhsham: false,
-        yatsi: false,
+        yatsi: true,
     },
     {
         date: new Date(mockNamazesDTO[2].date),
         sabah: false,
         oyle: false,
         ekindi: false,
-        akhsham: false,
+        akhsham: true,
         yatsi: false,
     },
     {
         date: new Date(mockNamazesDTO[3].date),
-        sabah: true,
-        oyle: true,
+        sabah: false,
+        oyle: false,
         ekindi: true,
         akhsham: true,
         yatsi: true,
@@ -63,6 +63,6 @@ export const mockNamazes: NamazesPerDay[] = [
         oyle: true,
         ekindi: true,
         akhsham: true,
-        yatsi: true,
+        yatsi: false,
     }
 ];
