@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DebtsRoutingModule } from 'src/app/debts/debts-routing.module';
 
@@ -20,7 +20,13 @@ import { NamazDebtTableComponent } from './components/namaz-debt-table/namaz-deb
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-    declarations: [DebtListComponent, DebtDetailComponent, DebtItemComponent, DebtAddComponent, NamazDebtTableComponent],
+    declarations: [
+        DebtListComponent,
+        DebtDetailComponent,
+        DebtItemComponent,
+        DebtAddComponent,
+        NamazDebtTableComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -37,6 +43,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         MatTabsModule,
 
         DebtsRoutingModule,
+    ],
+    providers: [
+        DatePipe
     ]
 })
 export class DebtsModule {

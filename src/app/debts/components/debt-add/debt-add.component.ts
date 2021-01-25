@@ -5,6 +5,7 @@ import { DebtService } from '../../services/debt.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { dateFromDateToValidator } from 'src/app/debts/services/validators/date-from-date-to.validator';
+import { UnavailableDateRangeValidatorService } from 'src/app/debts/services/validators/unavailable-date-range.validator';
 
 @Component({
     selector: 'app-debt-add',
@@ -27,10 +28,7 @@ export class DebtAddComponent implements OnInit {
                     Validators.required,
                 ]
             ),
-        },
-        [
-            dateFromDateToValidator(),
-        ]
+        }
     );
 
     constructor(
@@ -38,6 +36,7 @@ export class DebtAddComponent implements OnInit {
         private debtService: DebtService,
         private router: Router,
         private route: ActivatedRoute,
+        private unavailableDateRangeValidatorService: UnavailableDateRangeValidatorService
     ) {
     }
 
@@ -45,7 +44,14 @@ export class DebtAddComponent implements OnInit {
         this.route.data
             .subscribe((data: { debts: NamazDebt[] }) => {
                 this.unavailableDates = data.debts.map(debt => debt.date);
-                console.log(this.unavailableDates);
+
+                this.debtForm.setValidators([
+                    dateFromDateToValidator(),
+                    this.unavailableDateRangeValidatorService
+                        .getValidator(this.unavailableDates),
+                ]);
+
+                this.debtForm.updateValueAndValidity();
             });
     }
 

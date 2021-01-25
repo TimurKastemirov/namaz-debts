@@ -5,7 +5,7 @@ export function dateFromDateToValidator(): ValidatorFn {
         const dateFrom = control.get('dateFrom').value as Date;
         const dateTo = control.get('dateTo').value as Date;
         if (dateFrom && dateTo) {
-            if (dateFrom.getTime() - dateTo.getTime() >= 0) {
+            if (dateFrom.getTime() - dateTo.getTime() > 0) {
                 return {
                     dateFromDateTo: {
                         message: '"Date to" must be greater than "Date from"'
