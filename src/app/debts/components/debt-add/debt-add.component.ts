@@ -41,8 +41,6 @@ export class DebtAddComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        window.scrollTo(0, 0);
-
         this.route.data
             .subscribe((data: { debts: NamazDebt[] }) => {
                 this.unavailableDates = data.debts.map(debt => debt.date);

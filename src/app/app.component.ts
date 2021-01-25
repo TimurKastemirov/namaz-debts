@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 import { DebtApiService } from 'src/app/api/debt.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -24,7 +25,15 @@ export class AppComponent {
 
     constructor(
         private debtApiService: DebtApiService,
+        private router: Router
     ) {
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 100);
+            }
+        });
     }
 
     exportDebts() {
