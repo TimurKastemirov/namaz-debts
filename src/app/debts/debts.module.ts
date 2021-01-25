@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DebtsRoutingModule } from 'src/app/debts/debts-routing.module';
 
 import { MatCardModule } from '@angular/material/card';
@@ -17,19 +17,22 @@ import { DebtDetailComponent } from 'src/app/debts/components/debt-detail/debt-d
 import { DebtItemComponent } from 'src/app/debts/components/debt-item/debt-item.component';
 import { DebtAddComponent } from 'src/app/debts/components/debt-add/debt-add.component';
 import { NamazDebtTableComponent } from './components/namaz-debt-table/namaz-debt-table.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
     declarations: [DebtListComponent, DebtDetailComponent, DebtItemComponent, DebtAddComponent, NamazDebtTableComponent],
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
 
         MatButtonModule,
-        MatIconModule,
         MatCardModule,
         MatDatepickerModule,
-        MatNativeDateModule,
+        MatFormFieldModule,
+        MatIconModule,
         MatInputModule,
+        MatNativeDateModule,
         MatProgressBarModule,
         MatTabsModule,
 

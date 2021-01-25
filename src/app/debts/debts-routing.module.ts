@@ -13,6 +13,9 @@ const routes: Routes = [
             {
                 path: 'add',
                 component: DebtAddComponent,
+                resolve: {
+                    debts: DebtListResolverService,
+                },
             },
             {
                 path: ':id',
@@ -24,7 +27,6 @@ const routes: Routes = [
             {
                 path: '',
                 component: DebtListComponent,
-                // runGuardsAndResolvers: 'always',
                 resolve: {
                     debts: DebtListResolverService,
                 }

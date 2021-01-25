@@ -1,24 +1,37 @@
 <div class="debt-add">
-    <form novalidate name="form">
-        <mat-form-field appearance="fill">
-            <mat-label>Date from</mat-label>
-            <input matInput [matDatepicker]="picker1" name="from" [(ngModel)]="debt.date.from">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
+    <form [formGroup]="debtForm">
+        <div class="dates">
+            <mat-form-field appearance="fill">
+                <mat-label>Date from</mat-label>
+                <input matInput [matDatepicker]="pickerFrom" name="from" formControlName="dateFrom" required>
+                <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFrom></mat-datepicker>
+                <mat-error *ngIf="dateFrom.invalid">
+                    This field is required
+                </mat-error>
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Date to</mat-label>
-            <input matInput [matDatepicker]="picker" name="to" [(ngModel)]="debt.date.to">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Date to</mat-label>
+                <input matInput [matDatepicker]="pickerTo" name="to" formControlName="dateTo" required>
+                <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                <mat-datepicker #pickerTo></mat-datepicker>
+                <mat-error *ngIf="dateTo.invalid">
+                    This field is required
+                </mat-error>
+            </mat-form-field>
+        </div>
 
         <button mat-raised-button
                 color="primary"
-                [disabled]="!(debt.date.from && debt.date.to)"
+                [disabled]="!(debtForm.valid && (debtForm.dirty || debtForm.touched))"
                 (click)="save()"
         >save</button>
     </form>
+
+    <div *ngIf="debtForm.errors && (debtForm.touched || debtForm.dirty)"
+         class="cross-validation-error-message alert alert-danger"
+    >
+        <div>{{firstFormError?.message}}</div>
+    </div>
 </div>

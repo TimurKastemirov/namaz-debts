@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 import { Observable } from 'rxjs';
-import { DebtService } from '../debt.service';
+import { DebtService } from 'src/app/debts/services/debt.service';
 
 @Injectable({
   providedIn: 'root'

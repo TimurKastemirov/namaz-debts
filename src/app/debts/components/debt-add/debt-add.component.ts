@@ -3,6 +3,8 @@ import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 import { DebtGeneratorService } from '../../services/debt-generator.service';
 import { DebtService } from '../../services/debt.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { dateFromDateToValidator } from 'src/app/debts/services/validators/date-from-date-to.validator';
 
 @Component({
     selector: 'app-debt-add',
@@ -10,12 +12,26 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./debt-add.component.scss']
 })
 export class DebtAddComponent implements OnInit {
-    public debt: NamazDebt = {
-        date: {
-            from: null,
-            to: null
-        }
-    } as NamazDebt;
+    unavailableDates: Array<{ from: Date, to: Date }>;
+    debtForm = new FormGroup(
+        {
+            dateFrom: new FormControl(
+                '',
+                [
+                    Validators.required,
+                ]
+            ),
+            dateTo: new FormControl(
+                '',
+                [
+                    Validators.required,
+                ]
+            ),
+        },
+        [
+            dateFromDateToValidator(),
+        ]
+    );
 
     constructor(
         private debtGenerator: DebtGeneratorService,
@@ -26,20 +42,43 @@ export class DebtAddComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.route.data
+            .subscribe((data: { debts: NamazDebt[] }) => {
+                this.unavailableDates = data.debts.map(debt => debt.date);
+                console.log(this.unavailableDates);
+            });
+    }
+
+    get firstFormError(): { message: string } | null {
+        const errors = this.debtForm.errors;
+        if (errors) {
+            const errorKeys = Object.keys(errors);
+            if (errorKeys.length > 0) {
+                return errors[errorKeys[0]];
+            }
+        }
+
+        return null;
+    }
+
+    get dateFrom() {
+        return this.debtForm.get('dateFrom');
+    }
+
+    get dateTo() {
+        return this.debtForm.get('dateTo');
     }
 
     save(): void {
-        console.log(this.debt);
-        const date = this.debt.date;
-        const debt: NamazDebt = this.debtGenerator.generate(date);
+        const { dateFrom, dateTo } = this.debtForm.value;
+        const debt: NamazDebt = this.debtGenerator.generate({ from: dateFrom, to: dateTo });
         console.log(debt);
         this.debtService.create(debt)
             .subscribe(id => {
                 this.router.navigate(
                     ['../', id],
                     { relativeTo: this.route }
-                );
+                ).then();
             });
     }
-
 }
