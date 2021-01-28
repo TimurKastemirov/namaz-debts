@@ -25,7 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         DebtDetailComponent,
         DebtItemComponent,
         DebtAddComponent,
-        NamazDebtTableComponent
+        NamazDebtTableComponent,
     ],
     imports: [
         CommonModule,

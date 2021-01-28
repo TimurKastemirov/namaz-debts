@@ -27,7 +27,7 @@
       <mat-icon>import_export</mat-icon>
     </button>
     <mat-menu #import_export="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="importDebts()">
         <span>Import debts</span>
       </button>
       <button mat-menu-item (click)="exportDebts()">

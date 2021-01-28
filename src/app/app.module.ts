@@ -10,25 +10,31 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { DebtsModule } from './debts/debts.module';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ImportDebtsDialogComponent } from './import-debts-dialog/import-debts-dialog.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
-    DebtsModule,
-    AppRoutingModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ImportDebtsDialogComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+
+        MatButtonModule,
+        MatDialogModule,
+        MatIconModule,
+        MatMenuModule,
+        MatSliderModule,
+        MatSidenavModule,
+        MatToolbarModule,
+
+        DebtsModule,
+        AppRoutingModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
