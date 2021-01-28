@@ -1,3 +1,7 @@
+app-debt-list {
+  width: 310px;
+}
+
 .debt-list {
   padding-top: 15px;
 
@@ -6,6 +10,7 @@
   }
 }
 .btn-wrapper {
+  padding: 10px 0;
   .add-btn {
     background-color: red;
   }

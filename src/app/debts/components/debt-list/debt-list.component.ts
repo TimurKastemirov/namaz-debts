@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { concatMap, take } from 'rxjs/operators';
 import { NamazDebt } from 'src/app/debts/models/namaz-debt';
@@ -7,7 +7,8 @@ import { DebtService } from 'src/app/debts/services/debt.service';
 @Component({
     selector: 'app-debt-list',
     templateUrl: './debt-list.component.html',
-    styleUrls: ['./debt-list.component.scss']
+    styleUrls: ['./debt-list.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class DebtListComponent implements OnInit {
     debts: NamazDebt[];
