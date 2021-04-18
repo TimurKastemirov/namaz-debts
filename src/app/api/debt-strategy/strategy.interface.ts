@@ -7,4 +7,5 @@ export interface DebtApiStrategy {
   create(item: NamazDebtDTO): Observable<number>;
   update(item: NamazDebtDTO): Observable<null>;
   delete(id: number): Observable<null>;
+  removeAllDebts(): Observable<null>;
 }

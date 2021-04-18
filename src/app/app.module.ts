@@ -11,12 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { DebtsModule } from './debts/debts.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ImportDebtsDialogComponent } from './import-debts-dialog/import-debts-dialog.component';
+import { ImportDebtsDialogComponent } from 'src/app/dialogs/import-debts-dialog/import-debts-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/dialogs/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ImportDebtsDialogComponent,
+        ConfirmDialogComponent,
     ],
     imports: [
         BrowserModule,

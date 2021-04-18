@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Import Debts</h1>
+<div mat-dialog-content>
+    <label for="debts-file">
+        <mat-icon class="icon">cloud_upload</mat-icon>
+        <span *ngIf="!file.value" class="text">To set your debts file
+            <span class="click-here">click here</span>
+        </span>
+        <span *ngIf="file.value" class="text">{{file.files[0].name}}</span>
+    </label>
+    <input type="file" id="debts-file" name="debtsFile" #file (change)="fileUpload($event)">
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data">Ok</button>
+</div>

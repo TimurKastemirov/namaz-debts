@@ -46,4 +46,8 @@ export class DebtService {
     delete(id: number) {
         return this.debtApiService.delete(id);
     }
+
+    clearDebts() {
+        return this.debtApiService.clearDebts();
+    }
 }

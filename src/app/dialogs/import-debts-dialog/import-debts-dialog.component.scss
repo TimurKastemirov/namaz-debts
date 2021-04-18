@@ -1,0 +1,18 @@
+input {
+  display: none;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.icon {
+  margin-right: 20px;
+}
+
+.click-here {
+  color: #a0e48f;
+  cursor: pointer;
+}

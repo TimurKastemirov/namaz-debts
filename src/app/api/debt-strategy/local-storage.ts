@@ -51,6 +51,11 @@ export class LocalStorageStrategy implements DebtApiStrategy {
         return of(null);
     }
 
+    removeAllDebts(): Observable<null> {
+        this.debts = [];
+        return of(null);
+    }
+
     private generateId(): number {
         const debts = this.debts;
         return debts.length === 0

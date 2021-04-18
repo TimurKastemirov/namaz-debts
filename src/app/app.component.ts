@@ -3,7 +3,9 @@ import { NamazDebt } from 'src/app/debts/models/namaz-debt';
 import { DebtApiService } from 'src/app/api/debt.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { ImportDebtsDialogComponent } from 'src/app/import-debts-dialog/import-debts-dialog.component';
+import { ImportDebtsDialogComponent } from 'src/app/dialogs/import-debts-dialog/import-debts-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/dialogs/confirm-dialog/confirm-dialog.component';
+import { DebtService } from 'src/app/debts/services/debt.service';
 
 @Component({
     selector: 'app-root',
@@ -27,6 +29,7 @@ export class AppComponent {
 
     constructor(
         private debtApiService: DebtApiService,
+        private debtService: DebtService,
         private dialog: MatDialog,
         private router: Router,
     ) {
@@ -47,17 +50,36 @@ export class AppComponent {
     }
 
     importDebts() {
-        console.log('import debts');
-        this.openDialog();
+        this.openImportDialog();
     }
 
-    private openDialog(): void {
+    private openImportDialog(): void {
         const dialogRef = this.dialog.open(ImportDebtsDialogComponent, {
-            width: '250px',
+            width: '200px',
             data: {}
         });
 
-        dialogRef.afterClosed().subscribe(result => {
+        dialogRef.afterClosed().subscribe((result: NamazDebt[]) => {
+            if (result) {
+                this.dialog.open(ConfirmDialogComponent, {
+                    width: '300px',
+                    data: {
+                        title: 'Are You Sure?',
+                        description: 'You want to override all your debts?',
+                    }
+                })
+                    .afterClosed()
+                    .subscribe((isOk) => {
+                        if (isOk) {
+                            this.debtService.clearDebts();
+                            result.forEach(item => {
+                                this.debtService.create(item).subscribe();
+                            });
+                            this.router.navigate(['/my-debts']).then();
+                        }
+                    });
+                return;
+            }
             console.log('The dialog was closed');
         });
     }
