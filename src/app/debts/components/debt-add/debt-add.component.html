@@ -26,7 +26,9 @@
                 color="primary"
                 [disabled]="!(debtForm.valid && (debtForm.dirty || debtForm.touched))"
                 (click)="save()"
-        >save</button>
+        >
+            save
+        </button>
     </form>
 
     <div *ngIf="debtForm.errors && (debtForm.touched || debtForm.dirty)"

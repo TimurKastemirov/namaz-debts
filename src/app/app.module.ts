@@ -13,12 +13,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ImportDebtsDialogComponent } from 'src/app/dialogs/import-debts-dialog/import-debts-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/dialogs/confirm-dialog/confirm-dialog.component';
+import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ImportDebtsDialogComponent,
         ConfirmDialogComponent,
+        AlertDialogComponent,
     ],
     imports: [
         BrowserModule,
