@@ -19,11 +19,9 @@ export class DebtGeneratorService {
         };
     }
 
-    public generate(date: { from: Date, to: Date }): NamazDebt {
-        const to = date.to.getTime();
-        const from = date.from.getTime();
-        const dateFromCopy = new Date(date.from);
-        const daysCount = ((to - from) / this.mscInDay) + 1;
+    public generate(dates: { from: Date, to: Date }): NamazDebt {
+        const daysCount = this.countDays(dates);
+        const dateFromCopy = new Date(dates.from);
         const namazes = [];
         let namazesPerDay: NamazesPerDay;
 
@@ -35,8 +33,51 @@ export class DebtGeneratorService {
         }
 
         return {
-            date,
+            date: dates,
             namazes
         };
+    }
+
+    public generateByMonths(dates: { from: Date, to: Date }): NamazDebt[] {
+        const daysCount = this.countDays(dates);
+
+        const debts: NamazDebt[] = [];
+        let namazes: NamazesPerDay[] = [];
+        let namazesPerDay: NamazesPerDay;
+
+        let currentDate = new Date(dates.from);
+        let nextDate: Date;
+        let startDateForDebts: Date = new Date(dates.from);
+
+        for (let i = 0; i < daysCount; i++) {
+            nextDate = new Date(currentDate);
+            nextDate.setDate(currentDate.getDate() + 1);
+
+            namazesPerDay = DebtGeneratorService.createNamazesPerDayObj(currentDate);
+            namazes.push(namazesPerDay);
+
+            if (nextDate.getMonth() !== currentDate.getMonth()) {
+                debts.push({
+                    date: {
+                        from: startDateForDebts,
+                        to: currentDate,
+                    },
+                    namazes,
+                });
+
+                namazes = [];
+                startDateForDebts = new Date(nextDate);
+            }
+
+            currentDate = new Date(nextDate);
+        }
+
+        return debts;
+    }
+
+    public countDays(dates: { from: Date, to: Date }): number {
+        const to = dates.to.getTime();
+        const from = dates.from.getTime();
+        return ((to - from) / this.mscInDay) + 1;
     }
 }
