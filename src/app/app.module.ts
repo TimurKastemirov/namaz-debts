@@ -14,6 +14,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ImportDebtsDialogComponent } from 'src/app/dialogs/import-debts-dialog/import-debts-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/dialogs/confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.component';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -25,6 +27,7 @@ import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.compon
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        IonicModule.forRoot(),
 
         MatButtonModule,
         MatDialogModule,
@@ -37,7 +40,9 @@ import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.compon
         DebtsModule,
         AppRoutingModule,
     ],
-    providers: [],
+    providers: [
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
