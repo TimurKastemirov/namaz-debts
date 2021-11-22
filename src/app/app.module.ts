@@ -14,8 +14,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ImportDebtsDialogComponent } from 'src/app/dialogs/import-debts-dialog/import-debts-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/dialogs/confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.component';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { RouteReuseStrategy } from '@angular/router';
+// import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+// import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -27,7 +27,7 @@ import { RouteReuseStrategy } from '@angular/router';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        IonicModule.forRoot(),
+        // IonicModule.forRoot(),
 
         MatButtonModule,
         MatDialogModule,
@@ -40,9 +40,9 @@ import { RouteReuseStrategy } from '@angular/router';
         DebtsModule,
         AppRoutingModule,
     ],
-    providers: [
-        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-    ],
+    // providers: [
+    //     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    // ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
