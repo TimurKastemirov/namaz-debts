@@ -71,6 +71,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "namaz-debts:build:production"
+                        },
+                        "dev": {
+                            "browserTarget": "namaz-debts:build:dev"
                         }
                     }
                 },

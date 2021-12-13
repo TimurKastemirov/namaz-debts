@@ -14,8 +14,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ImportDebtsDialogComponent } from 'src/app/dialogs/import-debts-dialog/import-debts-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/dialogs/confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { language } from './helpers/language-definder';
 // import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 // import { RouteReuseStrategy } from '@angular/router';
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
     declarations: [
@@ -28,6 +36,15 @@ import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.compon
         BrowserModule,
         BrowserAnimationsModule,
         // IonicModule.forRoot(),
+        HttpClientModule,
+        TranslateModule.forRoot({
+            defaultLanguage: language,
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
 
         MatButtonModule,
         MatDialogModule,

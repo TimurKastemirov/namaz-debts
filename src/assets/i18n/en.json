@@ -1,0 +1,23 @@
+{
+    "HEADER": {
+        "TITLE": {
+            "NAMAZ_DEBTS": "Namaz debts"
+        },
+        "MENU": {
+            "NAMAZ_DEBTS": "Namaz debts"
+        },
+        "TOOLBAR": {
+            "IMPORT": "Import",
+            "EXPORT": "Export"
+        }
+    },
+    "BUTTONS": {
+        "ADD": "Add",
+        "SAVE": "Save",
+        "DETAIL": "Detail",
+        "DELETE": "Delete"
+    },
+    "FOOTER": {
+        "DEVELOPED": "Developed by Tymur Kastemirov in"
+    }
+}

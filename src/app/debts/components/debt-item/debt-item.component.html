@@ -14,19 +14,19 @@
         <p>Debt Days: {{debtDays}}</p>
         <p>Progress: {{progress | percent}}</p>
         <mat-progress-bar
-                mode="determinate"
-                value="{{progress * 100}}"
-                color="warn"
+            mode="determinate"
+            value="{{progress * 100}}"
+            color="warn"
         ></mat-progress-bar>
     </mat-card-content>
 
     <mat-card-actions>
         <button mat-button color="accent" (click)="goToDetail()">
-            <span>DETAIL</span>
+            <span>{{'BUTTONS.DETAIL' | translate}}</span>
             <mat-icon>arrow_right_alt</mat-icon>
         </button>
         <button mat-button color="warn" (click)="deleteItem()">
-            <span>DELETE</span>
+            <span>{{'BUTTONS.DELETE' | translate}}</span>
             <mat-icon>delete</mat-icon>
         </button>
     </mat-card-actions>

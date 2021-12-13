@@ -1,50 +1,50 @@
 <header>
-  <mat-toolbar>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu btn">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <mat-toolbar>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu btn">
+            <mat-icon>menu</mat-icon>
+        </button>
 
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/my-debts">
-        <mat-icon>menu_book</mat-icon>
-        <span>My debts</span>
-      </button>
-<!--      <button mat-menu-item routerLink="/my-debts/1">-->
-<!--        <mat-icon>settings</mat-icon>-->
-<!--        <span>My settings</span>-->
-<!--      </button>-->
-    </mat-menu>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/my-debts">
+                <mat-icon>menu_book</mat-icon>
+                <span>{{'HEADER.MENU.NAMAZ_DEBTS' | translate}}</span>
+            </button>
+            <!--      <button mat-menu-item routerLink="/my-debts/1">-->
+            <!--        <mat-icon>settings</mat-icon>-->
+            <!--        <span>My settings</span>-->
+            <!--      </button>-->
+        </mat-menu>
 
-    <span>{{title}}</span>
-    <span class="spacer"></span>
-<!--    <button mat-icon-button aria-label="favourite-button">-->
-<!--      <mat-icon>favorite</mat-icon>-->
-<!--    </button>-->
-<!--    <button mat-icon-button aria-label="share-button">-->
-<!--      <mat-icon>share</mat-icon>-->
-<!--    </button>-->
-    <button mat-icon-button [matMenuTriggerFor]="import_export" aria-label="import-export menu">
-      <mat-icon>import_export</mat-icon>
-    </button>
-    <mat-menu #import_export="matMenu">
-      <button mat-menu-item (click)="importDebts()">
-        <span>Import debts</span>
-      </button>
-      <button mat-menu-item (click)="exportDebts()">
-        <span>Export debts</span>
-      </button>
-    </mat-menu>
-  </mat-toolbar>
+        <span>{{title$ | async}}</span>
+        <span class="spacer"></span>
+        <!--    <button mat-icon-button aria-label="favourite-button">-->
+        <!--      <mat-icon>favorite</mat-icon>-->
+        <!--    </button>-->
+        <!--    <button mat-icon-button aria-label="share-button">-->
+        <!--      <mat-icon>share</mat-icon>-->
+        <!--    </button>-->
+        <button mat-icon-button [matMenuTriggerFor]="import_export" aria-label="import-export menu">
+            <mat-icon>import_export</mat-icon>
+        </button>
+        <mat-menu #import_export="matMenu">
+            <button mat-menu-item (click)="importDebts()">
+                <span>Import debts</span>
+            </button>
+            <button mat-menu-item (click)="exportDebts()">
+                <span>Export debts</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
 </header>
 
 <main>
-  <mat-drawer-container class="container" autosize>
-    <div class="sidenav-content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-drawer-container>
+    <mat-drawer-container class="container" autosize>
+        <div class="sidenav-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-container>
 </main>
 
 <footer>
-  <span class="copyright">© Developed by Timur Kastemirov in 2021.</span>
+    <span class="copyright">© {{'FOOTER.DEVELOPED' | translate}} 2021.</span>
 </footer>

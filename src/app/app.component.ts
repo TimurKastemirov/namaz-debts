@@ -4,6 +4,8 @@ import { DebtApiService } from 'src/app/api/debt.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { DebtService } from 'src/app/debts/services/debt.service';
 import { OpenDialogService } from 'src/app/dialogs/open-dialog.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +13,7 @@ import { OpenDialogService } from 'src/app/dialogs/open-dialog.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'Namaz debts';
+    title$: Observable<string> = this.translateService.get('HEADER.TITLE.NAMAZ_DEBTS');
     debts: NamazDebt[];
 
     private static download(filename, text) {
@@ -30,7 +32,9 @@ export class AppComponent {
         private debtService: DebtService,
         private openDialogService: OpenDialogService,
         private router: Router,
+        private translateService: TranslateService,
     ) {
+
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 setTimeout(() => {
